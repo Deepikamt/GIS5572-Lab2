@@ -1,26 +1,14 @@
 import os
 os.environ["CRYPTOGRAPHY_OPENSSL_NO_LEGACY"] = "1"
 
-#Modules required for this lab
+#Libraries required
 
-# for data manipulation and analysis
 import pandas as pd
-
-# for using ArcGIS tools and functionalities
 import arcpy
-
 import json
-
-# for making HTTP requests and interacting with web services
 import requests
-
-# for interacting with the operating system, managing file paths, and executing system commands
 import os
-
-# for working with ArcGIS API for Python
 import arcgis
-
-# to handle warnings generated during code execution
 import warnings
 
 # to suppress warnings during the execution
@@ -229,10 +217,6 @@ raster_to_points(output_downsampled_raster, output_points)
 upload_points_to_sde(output_points, output_sde_connection, output_sde_feature_class)
 
 
-#### Export Raster via CLI
-
-raster2pgsql -s 26915 -I -t 128x128 "F:\1. UMN MGIS\1. Semesters\4th Semester\1. ArcGIS II\2. Labs\Lab 02\Data\MN 2019 Land Cover\NLCD_2019_Land_Cover_clipped.tif" mnlandcover | psql -h 35.226.160.201 -d gis5572 -U postgres -p 5432
-
 # Set the paths to the input raster and the geodatabase
 dem_path = r"C:\Users\Deepika\OneDrive\Documents\ArcGIS\Projects\ArcGIS-II-Lab2\mn_dem\elev_30m_digital_elevation_model.gdb\digital_elevation_model_30m"
 output_gdb = r"C:\Users\Deepika\OneDrive\Documents\ArcGIS\Projects\ArcGIS-II-Lab2\ArcGIS-II-Lab2.gdb"
@@ -251,7 +235,7 @@ arcpy.CopyRaster_management(dem_path, output_raster)
 
 print(f"Raster '{raster_name}' copied to geodatabase.")
 
-# Path to Land Cover Dataset
+# Path to DEM Dataset
 geodatabase_path = r"C:\Users\Deepika\OneDrive\Documents\ArcGIS\Projects\ArcGIS-II-Lab2\ArcGIS-II-Lab2.gdb"
 DEM_raster = "digital_elevation_model_30m"
 DEM_raster_path = arcpy.os.path.join(geodatabase_path, DEM_raster)
